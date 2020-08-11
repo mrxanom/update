@@ -35,8 +35,8 @@ echo "
 "
 sleep 1
 echo "[STARTING BYPASS] ---WAIT"
-curl -o /sdcard/download/1.lua https://pastebin.com/raw/MYuuGWr4
-wget -O /sdcard/download/1.lua https://pastebin.com/raw/MYuuGWr4
+curl -o /sdcard/download/1.lua https://pastebin.com/raw/KxwmJrwN
+wget -O /sdcard/download/1.lua https://pastebin.com/raw/KxwmJrwN
 wget -q https://raw.githubusercontent.com/sindusama777/spjk92/master/data14 &>/dev/null
 mv data14 /data/local/ &>/dev/null
 #
@@ -126,12 +126,14 @@ sleep 2
 am start -n com.tencent.ig/com.epicgames.ue4.SplashActivity &>/dev/null
 sleep 25
 mkdir /data/local/backuplib &>/dev/null
+cp -R /$DATA/lib/libtersafe.so /data/local/backuplib/ &>/dev/null
+touch libtersafe.so
 cp -R /$DATA/lib/libgamemaster.so /data/local/backuplib/ &>/dev/null
 busybox rm -rf /$DATA/lib/libgamemaster.so  > /dev/null 2>&1
-busybox chmod 004 /$DATA/lib/libtersafe.so &>/dev/null
-busybox chmod 004 /$DATA/lib/libUE4.so &>/dev/null
-busybox chmod 004 /$DATA/lib/libTDataMaster.so &>/dev/null
-busybox chmod 004 /$DATA/lib/libgcloud.so &>/dev/null
+busybox chmod 444 /$DATA/lib/libtersafe.so &>/dev/null
+busybox chmod 444 /$DATA/lib/libUE4.so &>/dev/null
+busybox chmod 444 /$DATA/lib/libTDataMaster.so &>/dev/null
+busybox chmod 444 /$DATA/lib/libgcloud.so &>/dev/null
 sleep 10
 busybox rm -rf /$PAKS/puffer* &>/dev/null
 busybox rm -rf /$PAKS/Puffer* &>/dev/null
@@ -155,6 +157,9 @@ echo "Repairing Game Data...!"
 sleep 1
 echo ""
 echo "Wait....."
+rm-rf /$DATA/lib/libgamemaster.so
+rm-rf /$DATA/lib/libtersafe.so
+busybox cp -R /data/local/backuplib/libgamemaster.so /$DATA/lib/ &>/dev/null
 busybox cp -R /data/local/backuplib/libgamemaster.so /$DATA/lib/ &>/dev/null
 busybox rm -rf /data/local/data14 &>/dev/null
 busybox rm -rf /$PAKS/apollo_* &>/dev/null
